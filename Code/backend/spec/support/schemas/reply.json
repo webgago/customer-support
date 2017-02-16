@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "body": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "author": {
+      "$ref": "user.json"
+    }
+  },
+  "required": [
+    "id",
+    "body",
+    "author",
+    "created_at",
+    "updated_at"
+  ]
+}
+

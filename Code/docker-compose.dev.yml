@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  mysql:
+    image: 'mysql:5.7'
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - 'mysql:/var/lib/mysql'
+
+  elasticsearch:
+    image: 'elasticsearch:2.4'
+    volumes:
+      - 'elasticsearch:/usr/share/elasticsearch/data'
+
+  frontend:
+    build: 'frontend'
+    ports:
+      - '4000:4000'
+    depends_on:
+      - 'backend'
+    volumes:
+      - './frontend/bin:/app/bin'
+      - './frontend/config:/app/config'
+      - './frontend/server:/app/server'
+      - './frontend/src:/app/src'
+      - './frontend/tests:/app/tests'
+    command: npm run dev
+
+  backend:
+    build: 'backend'
+    env_file: 'backend/.env.docker.local'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - 'mysql'
+      - 'elasticsearch'
+    volumes:
+      - './backend:/app'
+
+volumes:
+  mysql:
+    driver: local
+  elasticsearch:
+    driver: local

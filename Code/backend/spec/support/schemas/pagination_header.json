@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "X-Total-Count": {
+      "type": "integer"
+    },
+    "X-Page": {
+      "type": "integer"
+    },
+    "X-Per-Page": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "X-Total-Count",
+    "X-Page",
+    "X-Per-Page"
+  ]
+}

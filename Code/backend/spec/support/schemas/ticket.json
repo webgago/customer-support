@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "closed_at": {
+      "type": ["null", "string"]
+    },
+    "closed": {
+      "type": "boolean"
+    },
+    "new": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "user": {
+      "$ref": "user.json"
+    },
+    "replies": {
+      "type": "array",
+      "items": {
+        "$ref": "reply.json"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "body",
+    "created_at",
+    "updated_at",
+    "closed_at",
+    "user",
+    "closed",
+    "new",
+    "status"
+  ]
+}
